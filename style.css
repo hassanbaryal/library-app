@@ -70,8 +70,22 @@ main {
     
 }
 
-main > * {
+/* BOOK CARDS */
+
+main > div {
     height: min(350px);
     width: min(500px);
-    background-color: #FBA666;
+    padding: 15px;
+    background-color: #ffd0ac;
+    border-left: 10px solid #271111;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr) repeat(2, 0.25fr); */
+}
+
+div .title {
+    font-size: 2rem;
+    font-weight: 700;
 }

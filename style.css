@@ -148,8 +148,24 @@ div .book-authors {
 
     display: flex;
     flex-flow: column;
+    gap: 25px;
 
     /* display: none; */
     /* transform: translate(50%, 50%); */
     /* visibility: hidden; */
+}
+
+#new-book-info-form .form-header {
+    height: 20%;
+    width: 80%;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #271111;
+    border: 5px solid #271111;
+    margin-top: 25px;
+    
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

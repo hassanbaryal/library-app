@@ -132,3 +132,24 @@ div .book-authors {
 .description {
     overflow: auto;
 }
+
+/* NEW BOOK FORM */
+
+#new-book-info-form {
+    background-color: #ffd0ac;
+    height: 700px;
+    width: 450px;
+    border-radius: 30px;
+    border-left: 10px solid #271111;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    position: absolute;
+    top: calc(50% - 350px);
+    left: calc(50% - 225px);
+
+    display: flex;
+    flex-flow: column;
+
+    /* display: none; */
+    /* transform: translate(50%, 50%); */
+    /* visibility: hidden; */
+}

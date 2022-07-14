@@ -151,9 +151,17 @@ div .book-authors {
     gap: 25px;
     align-items: center;
 
+
+    transform: scale(0.1);
+    transition: 1s;
     /* display: none; */
     /* transform: translate(50%, 50%); */
-    /* visibility: hidden; */
+    visibility: hidden;
+}
+
+#new-book-info-form.open-form {
+    visibility: visible;
+    transform: scale(1);
 }
 
 #new-book-info-form .form-header {

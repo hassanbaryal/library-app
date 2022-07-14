@@ -83,9 +83,30 @@ main > div {
 
     display: grid;
     /* grid-template-columns: repeat(3, 1fr) repeat(2, 0.25fr); */
+    grid-template-rows: minmax(48px, 1fr) repeat(4, minmax(29px, 0.7fr)) 3.3fr;
 }
 
 div .title {
+    color: #271111;
     font-size: 2rem;
     font-weight: 700;
+
+    justify-self: center;
+}
+
+div .book-authors {
+    color: #271111;
+    justify-self: center;
+}
+
+.status,
+.pg-count,
+.rating,
+.description span {
+    color: #6D2608;
+    text-decoration: underline;
+}
+
+.description {
+    overflow: auto;
 }

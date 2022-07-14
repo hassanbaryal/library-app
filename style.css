@@ -76,7 +76,7 @@ main {
 
 /* BOOK CARDS */
 
-main > div {
+main  .book-card {
     height: min(350px);
     width: min(500px);
     padding: 15px;
@@ -88,6 +88,12 @@ main > div {
     display: grid;
     /* grid-template-columns: repeat(3, 1fr) repeat(2, 0.25fr); */
     grid-template-rows: minmax(48px, 1fr) repeat(4, minmax(29px, 0.7fr)) 3.3fr;
+
+    transition: 0.5s;
+}
+
+main .book-card:hover {
+    transform: scale(1.1);
 }
 
 main #add-book-btn {

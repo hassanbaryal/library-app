@@ -47,6 +47,29 @@
 
     </main>
 
+    <form action="" id="new-book-info-form">
+        <div class="form-header">New Book</div>
+        
+        <div class="input-area">
+            <div class="form-row">
+                <label for="book-title">Book Title</label>
+                <input type="text" name="book-title" id="book-title" required minlength="1">
+            </div>
+            <div class="form-row">
+                <label for="author">Author(s)</label>
+                <input type="text" name="Author" id="author" required minlength="1">
+            </div>
+            <div class="form-row">
+                <label for="book-link">Link (e.g. review, buy, etc.)</label>
+                <input type="url" name="book-link" id="booklink">
+            </div>
+            <div class="form-row">
+                <label for="page-count">Page Count</label>
+                <input type="number" name="page-count" id="page-count" min="1">
+            </div>
+        </div>
+    </form>
+
     <script src="./script.js"></script>
 </body>
 </html>

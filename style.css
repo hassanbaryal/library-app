@@ -149,6 +149,7 @@ div .book-authors {
     display: flex;
     flex-flow: column;
     gap: 25px;
+    align-items: center;
 
     /* display: none; */
     /* transform: translate(50%, 50%); */
@@ -168,4 +169,26 @@ div .book-authors {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#new-book-info-form .input-area {
+    width: 90%;
+
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+}
+
+.form-row {
+    font-size: 1.1rem;
+    display: flex;
+    flex-flow: column;
+}
+
+input,
+textarea {
+    line-height: 1.3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 2px solid #271111;
+    background-color: #FBA666;
 }

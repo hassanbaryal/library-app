@@ -1,16 +1,16 @@
 
 
 const addBookBtn = document.getElementById("add-book-btn")
-const newBookForm = document.getElementById("book-form")
-const newBookFormCloseBtn = document.getElementById("close-new-book")
-const newBookFormSubmitBtn = document.getAnimations("submit-new-book")
+const bookForm = document.getElementById("book-form")
+const bookFormCloseBtn = document.getElementById("close-new-book")
+const bookFormSubmitBtn = document.getAnimations("submit-new-book")
 
 addBookBtn.addEventListener("click", () => {
-    newBookForm.classList.toggle("open-form")
+    bookForm.classList.toggle("open-form")
     addBookBtn.disabled = true
 })
 
-newBookFormCloseBtn.addEventListener("click", () => {
-    newBookForm.classList.toggle("open-form")
+bookFormCloseBtn.addEventListener("click", () => {
+    bookForm.classList.toggle("open-form")
     addBookBtn.disabled = false
 })

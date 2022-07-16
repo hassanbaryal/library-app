@@ -133,6 +133,19 @@ div .book-authors {
     overflow: auto;
 }
 
+.book-buttons {
+    margin-top: 20px;
+    justify-self: end;
+    display: flex;
+    gap: 25px;
+}
+
+.book-buttons button {
+    background-color: inherit;
+    outline: none;
+    border: none;
+}
+
 /* NEW BOOK FORM */
 
 #new-book-info-form {

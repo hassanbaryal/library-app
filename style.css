@@ -148,7 +148,7 @@ div .book-authors {
 
 /* NEW BOOK FORM */
 
-#new-book-info-form {
+#book-form {
     background-color: #ffd0ac;
     height: 800px;
     width: 450px;
@@ -172,12 +172,12 @@ div .book-authors {
     visibility: hidden;
 }
 
-#new-book-info-form.open-form {
+#book-form.open-form {
     visibility: visible;
     transform: scale(1);
 }
 
-#new-book-info-form .form-header {
+#book-form .form-header {
     height: 20%;
     width: 80%;
     font-size: 4rem;
@@ -192,7 +192,7 @@ div .book-authors {
     justify-content: center;
 }
 
-#new-book-info-form .input-area {
+#book-form .input-area {
     width: 90%;
 
     display: flex;
@@ -215,13 +215,13 @@ textarea {
     resize: none;
 }
 
-#new-book-info-form .buttons {
+#book-form .buttons {
     margin-bottom: 25px;
     display: flex;
     gap: 50px;
 }
 
-#new-book-info-form button {
+#book-form button {
     width: 95px;
     height: 35px;
     color: antiquewhite;

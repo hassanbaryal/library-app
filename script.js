@@ -1,7 +1,7 @@
 
 
 const addBookBtn = document.getElementById("add-book-btn")
-const newBookForm = document.getElementById("new-book-info-form")
+const newBookForm = document.getElementById("book-form")
 const newBookFormCloseBtn = document.getElementById("close-new-book")
 const newBookFormSubmitBtn = document.getAnimations("submit-new-book")
 

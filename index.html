@@ -60,15 +60,15 @@
         
         <div class="input-area">
             <div class="form-row">
-                <label for="book-title">Book Title</label>
+                <label for="book-title">Book Title*</label>
                 <input type="text" name="book-title" id="book-title" required minlength="1">
             </div>
             <div class="form-row">
-                <label for="author">Author(s)</label>
+                <label for="author">Author(s)*</label>
                 <input type="text" name="Author" id="author" required minlength="1">
             </div>
             <div class="form-row">
-                <label>Status</label>
+                <label>Status*</label>
                 <div>
                     <input type="radio" name="read-status" id="read-status-1" value="Read" required>
                     <label for="read-status-1">I have read the book</label>
@@ -101,7 +101,7 @@
 
         <div class="buttons">
             <button type="button" id="submit-new-book">Submit</button>
-            <button type="button" id="close-new-book">Close</button>
+            <button type="reset" id="close-new-book">Close</button>
         </div>
 
     </form>

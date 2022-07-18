@@ -124,7 +124,7 @@ div .book-authors {
 .status,
 .pg-count,
 .rating,
-.description span {
+.description .description-text {
     color: #6D2608;
     text-decoration: underline;
 }

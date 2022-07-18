@@ -17,6 +17,8 @@ function Book(title, author, readStatus, link, pageCount, rating, description, n
 
 let library = []
 
+const bookCard = document.querySelector(".book-card").cloneNode(true) //copy empty bookcard template
+document.querySelector(".book-card").remove() //remove the empty book card on startup
 const addBookBtn = document.getElementById("add-book-btn")
 const bookForm = document.getElementById("book-form")
 const bookFormHeader = document.querySelector(".form-header")
@@ -50,16 +52,37 @@ function editLibrary() {
     if (bookFormHeader.textContent.includes("New")) {
         library.push(new Book(bookFormInputs[0].value, bookFormInputs[1].value, (bookFormInputs[2].checked ? bookFormInputs[2].value : bookFormInputs[3].value), bookFormInputs[4].value, bookFormInputs[5].value, bookFormInputs[6].value, bookFormInputs[7].value))
 
-        console.log(bookFormInputs[0].value)
-        console.log(bookFormInputs[1].value)
-        console.log((bookFormInputs[2].checked ? bookFormInputs[2].value : bookFormInputs[3].value))
-        console.log(bookFormInputs[4].value)
-        console.log(bookFormInputs[5].value)
-        console.log(bookFormInputs[6].value)
-        console.log(bookFormInputs[7].value)
-
+        createBookCard(library[library.length - 1])
+        bookFormCloseBtn.click()
 
         // add attribute to Book contructor that points to its own book card using data-attributes
         // use document.querySelector(".book-card").dataset.book to get custom attribute value
     }
+}
+
+
+function createBookCard(book) {
+    //clone bookcard into node in book
+    //add attributes to the node (e.g. title, autohor, read status, etc.)
+    // add data attributes to bookcard and the three buttons
+    //
+    book.node = bookCard.cloneNode(true)
+    
+    // Add the data-title attribute to the book-card element
+    // and its button descendants
+    let bookCardBtns = book.node.querySelectorAll("button")
+    book.node.setAttribute("data-title", book.title)
+    bookCardBtns[0].setAttribute("data-title", book.title)
+    bookCardBtns[1].setAttribute("data-title", book.title)
+    bookCardBtns[2].setAttribute("data-title", book.title)
+
+    // Fill out book card with info that user submitted
+    book.node.querySelector(".title").innerHTML = book.title
+    book.node.querySelector(".authors").innerHTML = book.author
+    book.node.querySelector(".read").innerHTML = book.readStatus
+    book.node.querySelector(".count").innerHTML = book.pageCount
+    book.node.querySelector(".rating-num").innerHTML = book.rating
+    book.node.querySelector(".description-content").innerHTML = book.description
+
+    addBookBtn.parentElement.insertBefore(book.node, addBookBtn)
 }

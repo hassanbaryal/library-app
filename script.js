@@ -41,7 +41,6 @@ bookFormSubmitBtn.addEventListener("click", (e) => {
     e.preventDefault()
     if (bookForm.checkValidity()) {
         editLibrary()
-        console.log("what happened")
     } else {
         alert("Invalid Submission!")
     }
@@ -77,12 +76,47 @@ function createBookCard(book) {
     bookCardBtns[2].setAttribute("data-title", book.title)
 
     // Fill out book card with info that user submitted
-    book.node.querySelector(".title").innerHTML = book.title
-    book.node.querySelector(".authors").innerHTML = book.author
-    book.node.querySelector(".read").innerHTML = book.readStatus
-    book.node.querySelector(".count").innerHTML = book.pageCount
-    book.node.querySelector(".rating-num").innerHTML = book.rating
-    book.node.querySelector(".description-content").innerHTML = book.description
+    book.node.querySelector(".title").textContent = book.title
+    book.node.querySelector(".authors").textContent = book.author
+    book.node.querySelector(".read").textContent = book.readStatus
+    book.node.querySelector(".count").textContent = book.pageCount
+    book.node.querySelector(".rating-num").textContent = book.rating
+    book.node.querySelector(".description-content").textContent = book.description
 
+    // Add href tag to title, if available
+    if (!(book.link === "")) {
+        book.node.querySelector(".title").setAttribute("href", book.link)
+    }
+
+    // Add book card to page
     addBookBtn.parentElement.insertBefore(book.node, addBookBtn)
+
+    // Add listener to bookcard buttons
+    bookCardBtns[0].addEventListener("click", (e) => {changeReadStatus(e.target.parentElement)}) // Change read status
+    bookCardBtns[1].addEventListener("click", (e) => {
+        // Edit book card details
+    })
+    bookCardBtns[2].addEventListener("click", (e) => {
+        // Delete book card
+    })
+}
+
+// Changes the read status of targetted book
+function changeReadStatus (e) {
+    console.log(e)
+    let i = 0;
+    while(true) {
+        if (library[i].node.dataset.title === e.dataset.title) {
+            break
+        }
+        i++;
+    }
+
+    if (library[i].readStatus === "Read") {
+        library[i].readStatus = "Not yet read"
+        library[i].node.querySelector(".read").textContent = "Not yet read"
+    } else {
+        library[i].readStatus = "Read"
+        library[i].node.querySelector(".read").textContent = "Read"
+    }
 }

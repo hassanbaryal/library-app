@@ -1,8 +1,3 @@
-// FOR DISCERNING BETWEEN NEW AND EDIT BOOK
-// when + book is pressed, make header "New Book"
-// when edit book is pressed, make header "Edit book"
-// both cases, function will check wether header says new or edit
-// and perform task based on that
 
 function Book(title, author, readStatus, link, pageCount, rating, description, node) {
     this.title = title
@@ -33,18 +28,19 @@ const bookFormSubmitBtn = document.getElementById("submit-new-book")
 addBookBtn.addEventListener("click", () => {
     bookFormHeader.textContent = "New Book"
     bookForm.classList.toggle("open-form")
-    addBookBtn.disabled = true
+    toggleButtons(0)
 })
 
 bookFormCloseBtn.addEventListener("click", () => {
     bookForm.classList.toggle("open-form")
-    addBookBtn.disabled = false
+    toggleButtons(1)
 })
 
 bookFormSubmitBtn.addEventListener("click", (e) => {
     e.preventDefault()
     if (bookForm.checkValidity()) {
         editLibrary()
+        toggleButtons(1)
     } else {
         alert("Invalid Submission!")
     }
@@ -53,13 +49,9 @@ bookFormSubmitBtn.addEventListener("click", (e) => {
 function editLibrary() {
 
     if (bookFormHeader.textContent.includes("New")) {
+        // Create new book in library
         library.push(new Book(bookFormInputs[0].value, bookFormInputs[1].value, (bookFormInputs[2].checked ? bookFormInputs[2].value : bookFormInputs[3].value), bookFormInputs[4].value, bookFormInputs[5].value, bookFormInputs[6].value, bookFormInputs[7].value))
-
         createBookCard(library[library.length - 1])
-        
-
-        // add attribute to Book contructor that points to its own book card using data-attributes
-        // use document.querySelector(".book-card").dataset.book to get custom attribute value
     } else {
         // Update book details in library
         library[index].title = bookFormInputs[0].value
@@ -77,10 +69,7 @@ function editLibrary() {
 
 
 function createBookCard(book) {
-    //clone bookcard into node in book
-    //add attributes to the node (e.g. title, autohor, read status, etc.)
-    // add data attributes to bookcard and the three buttons
-    //
+    // Clone book card template to book
     book.node = bookCard.cloneNode(true)
     
     // Add the data-title attribute to the book-card element
@@ -120,9 +109,9 @@ function createBookCard(book) {
         index = i
         bookFormHeader.textContent = "Edit Book"
         fillOutEditForm(library[i])
+        toggleButtons(0)
         bookForm.classList.toggle("open-form")
         addBookBtn.disabled = true
-        // editLibrary()
     })
     bookCardBtns[2].addEventListener("click", (e) => {removeBook(e.target.parentElement)}) // Delete book and book card
 }
@@ -184,4 +173,20 @@ function removeBook (e) {
     }
     library[i].removeNode()
     library.splice(i, 1)
+}
+
+function toggleButtons (x) {
+    let bookCardBtns = library.map(book => book.node.querySelectorAll("button"))
+
+    if (x === 1) {
+        bookCardBtns.forEach(book => {
+            book.forEach(btn => btn.disabled = false)
+        })
+        addBookBtn.disabled = false
+    } else {
+        bookCardBtns.forEach(book => {
+            book.forEach(btn => btn.disabled = true)
+        })
+        addBookBtn.disabled = true
+    }
 }

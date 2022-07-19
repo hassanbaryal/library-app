@@ -13,6 +13,9 @@ function Book(title, author, readStatus, link, pageCount, rating, description, n
     this.rating = rating
     this.description = description
     this.node = node
+    this.removeNode = function () {
+        this.node.remove()
+    }
 }
 
 let library = []
@@ -96,20 +99,16 @@ function createBookCard(book) {
     bookCardBtns[1].addEventListener("click", (e) => {
         // Edit book card details
     })
-    bookCardBtns[2].addEventListener("click", (e) => {
-        // Delete book card
-    })
+    bookCardBtns[2].addEventListener("click", (e) => {removeBook(e.target.parentElement)}) // Delete book and book card
 }
 
 // Changes the read status of targetted book
 function changeReadStatus (e) {
-    console.log(e)
     let i = 0;
-    while(true) {
+    for (i = 0; i < library.length; i++) {
         if (library[i].node.dataset.title === e.dataset.title) {
             break
         }
-        i++;
     }
 
     if (library[i].readStatus === "Read") {
@@ -119,4 +118,16 @@ function changeReadStatus (e) {
         library[i].readStatus = "Read"
         library[i].node.querySelector(".read").textContent = "Read"
     }
+}
+
+// Deletes targetted book card from page and removes from library array
+function removeBook (e) {
+    let i = 0;
+    for (i = 0; i < library.length; i++) {
+        if (library[i].node.dataset.title === e.dataset.title) {
+            break
+        }
+    }
+    library[i].removeNode()
+    library.splice(i, 1)
 }

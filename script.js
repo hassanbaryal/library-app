@@ -19,6 +19,7 @@ function Book(title, author, readStatus, link, pageCount, rating, description, n
 }
 
 let library = []
+let index = 0
 
 const bookCard = document.querySelector(".book-card").cloneNode(true) //copy empty bookcard template
 document.querySelector(".book-card").remove() //remove the empty book card on startup
@@ -55,11 +56,23 @@ function editLibrary() {
         library.push(new Book(bookFormInputs[0].value, bookFormInputs[1].value, (bookFormInputs[2].checked ? bookFormInputs[2].value : bookFormInputs[3].value), bookFormInputs[4].value, bookFormInputs[5].value, bookFormInputs[6].value, bookFormInputs[7].value))
 
         createBookCard(library[library.length - 1])
-        bookFormCloseBtn.click()
+        
 
         // add attribute to Book contructor that points to its own book card using data-attributes
         // use document.querySelector(".book-card").dataset.book to get custom attribute value
+    } else {
+        // Update book details in library
+        library[index].title = bookFormInputs[0].value
+        library[index].author = bookFormInputs[1].value
+        library[index].readStatus = (bookFormInputs[2].checked ? bookFormInputs[2].value : bookFormInputs[3].value)
+        library[index].link = bookFormInputs[4].value
+        library[index].pageCount = bookFormInputs[5].value
+        library[index].rating = bookFormInputs[6].value
+        library[index].description = bookFormInputs[7].value
+        editBookCard(library[index])
     }
+
+    bookFormCloseBtn.click()
 }
 
 
@@ -96,11 +109,52 @@ function createBookCard(book) {
 
     // Add listener to bookcard buttons
     bookCardBtns[0].addEventListener("click", (e) => {changeReadStatus(e.target.parentElement)}) // Change read status
-    bookCardBtns[1].addEventListener("click", (e) => {
-        // Edit book card details
+    bookCardBtns[1].addEventListener("click", (e) => { // Edit book card details
+        
+        let i = 0;
+        for (i = 0; i < library.length; i++) {
+            if (library[i].node.dataset.title === e.target.parentElement.dataset.title) {
+                break
+            }
+        }
+        index = i
+        bookFormHeader.textContent = "Edit Book"
+        fillOutEditForm(library[i])
+        bookForm.classList.toggle("open-form")
+        addBookBtn.disabled = true
+        // editLibrary()
     })
     bookCardBtns[2].addEventListener("click", (e) => {removeBook(e.target.parentElement)}) // Delete book and book card
 }
+
+function editBookCard (book) {
+    // Fill out book card with info that user submitted
+    book.node.querySelector(".title").textContent = book.title
+    book.node.querySelector(".authors").textContent = book.author
+    book.node.querySelector(".read").textContent = book.readStatus
+    book.node.querySelector(".count").textContent = book.pageCount
+    book.node.querySelector(".rating-num").textContent = book.rating
+    book.node.querySelector(".description-content").textContent = book.description
+
+    // Add href tag to title, if available
+    if (!(book.link === "")) {
+        book.node.querySelector(".title").setAttribute("href", book.link)
+    } else {
+        book.node.querySelector(".title").removeAttribute("href")
+    }
+}
+
+// Fills out the edit form with available book info
+function fillOutEditForm (book) {
+    bookFormInputs[0].value = book.title
+    bookFormInputs[1].value = book.author;
+    (book.readStatus === "Read") ? (bookFormInputs[2].checked = true) : (bookFormInputs[3].checked = true)
+    bookFormInputs[4].value = book.link
+    bookFormInputs[5].value = book.pageCount
+    bookFormInputs[6].value = book.rating
+    bookFormInputs[7].value = book.description
+}
+
 
 // Changes the read status of targetted book
 function changeReadStatus (e) {

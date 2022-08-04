@@ -1,14 +1,31 @@
 
-function Book(title, author, readStatus, link, pageCount, rating, description, node) {
-    this.title = title
-    this.author = author
-    this.readStatus = readStatus
-    this.link = link
-    this.pageCount = pageCount
-    this.rating = rating
-    this.description = description
-    this.node = node
-    this.removeNode = function () {
+// function Book(title, author, readStatus, link, pageCount, rating, description, node) {
+//     this.title = title
+//     this.author = author
+//     this.readStatus = readStatus
+//     this.link = link
+//     this.pageCount = pageCount
+//     this.rating = rating
+//     this.description = description
+//     this.node = node
+//     this.removeNode = function () {
+//         this.node.remove()
+//     }
+// }
+
+class Book {
+
+    constructor (title, author, readStatus, link, pageCount, rating, description, node) {
+        this.title = title
+        this.author = author
+        this.readStatus = readStatus
+        this.link = link
+        this.pageCount = pageCount
+        this.rating = rating
+        this.description = description
+        this.node = node
+    }
+    removeNode() {
         this.node.remove()
     }
 }
